@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Route,Routes } from 'react-router-dom'
-import {Login} from './components/login'
+import {login} from './components/login'
 import './App.css'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<login />} />
       </Routes>
     </>
   )
