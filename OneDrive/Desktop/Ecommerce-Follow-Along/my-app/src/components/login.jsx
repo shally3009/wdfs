@@ -1,99 +1,69 @@
-import React, { useState } from 'react';
-import './login.css';
-
+import React, { useState } from 'react'
+import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
+import './login.css'
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [visible, setVisible] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setVisible(!visible);
-  };
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [visible, setVisible] = useState(false)
 
   return (
-    <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            alt="Your Company"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-900">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
-                />
-              </div>
+    <div>
+        <div className="flex justify-center items-center h-screen bg-gray-200">
+            <div className="bg-white p-16 rounded-lg shadow-2xl w-96">
+            <h2 className="text-3xl font-bold mb-10 text-center">Login</h2>
+            <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-600">Email</label>
+                <input type="email"
+                 id="email" 
+                 className="w-full border-2 border-gray-300 p-3 rounded outline-none focus:border-purple-500" 
+                 autoComplete='on'
+                 value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+                required />
             </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-900">
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a>
+
+            <div className="mb-4">
+                <label htmlFor="password" className="block text-gray-600">Password</label>
+                <div className="relative">
+                <input type={visible ? "text" : "password"} id="password" className="w-full border-2 border-gray-300 p-3 rounded outline-none focus:border-purple-500" 
+                value={password} 
+
+                onChange={(e) => setPassword(e.target.value)} 
+                required/>
+
+              {
+                visible ?
+                <AiOutlineEyeInvisible className="absolute top-4 right-4 text-gray-500 cursor-pointer" 
+                onClick={() => setVisible(false)} 
+                size={25}/>:
+                <AiOutlineEye className="absolute top-4 right-4 text-gray-500 cursor-pointer" 
+                onClick={() => setVisible(true)}
+                size={25} />
+              }
+
+
+                 
+                </div>
+            </div>
+              <div className="setting-container">
+                <div className='remember'>
+                    <input type="checkbox"/>
+                    <label>Remember me!</label>
+                </div>
+                <div>
+                <div className='forgot-password'>
+                <a href="">Forgot Password</a>
+                </div>
                 </div>
               </div>
-              <div className="mt-2 relative">
-                <input
-                  id="password"
-                  name="password"
-                  type={visible ? 'text' : 'password'}
-                  required
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
-                >
-                  {visible ? 'Hide' : 'Show'}
-                </button>
-              </div>
-            </div>
+            <button className="w-full bg-purple-500 text-white p-3 rounded hover:bg-purple-600">Login</button>
 
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
+            <div className='newUser'>
+              <p>Not a user? <a href="">Create an account</a></p>
             </div>
-          </form>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-              Start a 14-day free trial
-            </a>
-          </p>
+            </div>
         </div>
-      </div>
-    </>
-  );
+    </div>
+  )
 }
