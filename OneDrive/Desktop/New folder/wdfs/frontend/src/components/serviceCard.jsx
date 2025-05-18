@@ -9,9 +9,7 @@ const ServiceCard = ({ServiceTitle,ServiceDescription}) => {
         </div>
     );
 }
-export default ServiceCard;
-
-
+export default ServiceCard
 
 
 
